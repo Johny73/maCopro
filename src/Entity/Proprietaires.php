@@ -2,9 +2,9 @@
 
 namespace App\Entity;
 
-use App\Repository\ProprietairesRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ProprietairesRepository")
@@ -20,11 +20,13 @@ class Proprietaires
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank()
      */
     private $nom;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank()
      */
     private $prenom;
 
@@ -41,7 +43,7 @@ class Proprietaires
     /**
     * @ORM\Column(type="string", length=255)
     */
-    private $codePostale;
+    private $codePostal;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -65,7 +67,7 @@ class Proprietaires
 
     public function setNom(string $nom): self
     {
-        $this->nom = $nom;
+        $this->nom = strtoupper($nom);
 
         return $this;
     }
@@ -77,7 +79,7 @@ class Proprietaires
 
     public function setPrenom(string $prenom): self
     {
-        $this->prenom = $prenom;
+        $this->prenom = ucwords(strtolower($prenom));
 
         return $this;
     }
@@ -102,19 +104,19 @@ class Proprietaires
 
     public function setVoie(?string $voie): self
     {
-        $this->voie = $voie;
+        $this->voie = ucwords(strtolower($voie));
 
         return $this;
     }
 
-    public function getCodePostale(): ?string
+    public function getCodePostal(): ?string
     {
-        return $this->codePostale;
+        return $this->codePostal;
     }
 
-    public function setCodePostale(?string $codePostale): self
+    public function setCodePostal(?string $codePostal): self
     {
-        $this->codePostale = $codePostale;
+        $this->codePostal = $codePostal;
 
         return $this;
     }
@@ -126,7 +128,7 @@ class Proprietaires
 
     public function setVille(?string $ville): self
     {
-        $this->ville = $ville;
+        $this->ville = strtoupper($ville);
 
         return $this;
     }

@@ -19,7 +19,7 @@ class ProprioType extends AbstractType
             ->add('prenom')
             ->add('numero')
             ->add('voie')
-            ->add('codePostale')
+            ->add('codePostal')
             ->add('ville')
             ->getForm();
         ;
@@ -29,7 +29,7 @@ class ProprioType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Proprietaires::class,
-            /*'label_format' => 'board_game.%name%.label'*/
+            'label_format' => 'proprio.%name%.label'
         ]);
     }
 }

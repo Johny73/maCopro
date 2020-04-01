@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Ajouter un nouveau Copropriétaire</h1>
+    <h1>{{ 'proprio.new_page.title'|trans }}</h1>
 
-    {{ include('proprio/_form.html.twig') }}
+    {{ include('proprio/_form.html.twig',{form: new_form, action:'proprio.action.ajouter'|trans}) }}
 {% endblock %}

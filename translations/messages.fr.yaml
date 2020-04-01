@@ -1,0 +1,18 @@
+proprio:
+  nom:
+    label: 'nom'
+  prenom:
+    label: 'prenom'
+  voie:
+    label: 'voie'
+  codePostal:
+    label: 'code postal'
+  ville:
+    label: 'ville'
+  numero:
+    label: 'numéro'
+  action:
+    ajouter: 'ajouter'
+  new_page:
+    title: 'Ajout nouveau Copropriétaire'
+
