@@ -1,16 +1,13 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Co-Propriétaires{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+    <h1>{{ 'proprio.index_page.title'|trans }}</h1>
+    <ul>
+        {%  for proprio in proprios %}
+            <li>{{ proprio.nom }}<a href="{{ path('app_proprio_show', { id: proprio.id }) }}">  {{'proprio.action.voir'|trans  }}  </a></li>
+        {% endfor %}
+    </ul>
 
-<div class="example-wrapper">
-    <h1>Gestion de copropriétaires</h1>
-
-
-</div>
+    <a href="{{ path('app_proprio_new') }}">  {{'proprio.action.ajouter'|trans  }}  </a>
 {% endblock %}

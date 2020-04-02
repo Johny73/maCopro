@@ -13,6 +13,12 @@ proprio:
     label: 'numéro'
   action:
     ajouter: 'ajouter'
+    voir: 'consulter'
+    retour: 'retour liste propriétaires'
   new_page:
     title: 'Ajout nouveau Copropriétaire'
+  index_page:
+    title: 'Les propriétaires'
+  show_page:
+    title: 'Détail du '
 

@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <a href="{{ path('app_proprio_index') }}">{{'proprio.action.retour'|trans}}</a>
+
+<h1>Détail de {{proprio.nom}} {{proprio.prenom}} </h1>
+    <p> {{ proprio.nom }} {{ proprio.prenom }} <br/>
+        {{ proprio.numero }}, {{ proprio.voie }}<br/>
+        {{ proprio.codePostal }}  {{ proprio.ville }}
+    </p>
+
+       {# <a href="{{ path('app_admin_boardgame_edit', { id: board_game.id }) }}">  {{'board_game.action.edit'|trans}}  </a> #}
+
+{% endblock %}
