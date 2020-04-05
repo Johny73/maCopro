@@ -9,6 +9,10 @@
 /vendor/
 ###< symfony/framework-bundle ###
 
+###< idées et notes perso ###
+/idees_et_notes
+###< idées et notes perso ###
+
 ###> symfony/phpunit-bridge ###
 .phpunit
 .phpunit.result.cache

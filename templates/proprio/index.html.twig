@@ -5,7 +5,7 @@
     <h1>{{ 'proprio.index_page.title'|trans }}</h1>
     <ul>
         {%  for proprio in proprios %}
-            <li>{{ proprio.nom }}<a href="{{ path('app_proprio_show', { id: proprio.id }) }}">  {{'proprio.action.voir'|trans  }}  </a></li>
+            <li>{{ proprio.nom }} {{ proprio.prenom }} <a href="{{ path('app_proprio_show', { id: proprio.id }) }}">  {{'proprio.action.voir'|trans  }}  </a></li>
         {% endfor %}
     </ul>
 

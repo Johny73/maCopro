@@ -3,5 +3,10 @@
 {% block body %}
     <h1>{{ 'proprio.new_page.title'|trans }}</h1>
 
-    {{ include('proprio/_form.html.twig',{form: new_form, action:'proprio.action.ajouter'|trans}) }}
+  {#
+  {{ include('proprio/_form.html.twig',{form: new_form, action:'proprio.action.ajouter'|trans}) }}
+   #}
+
+    {{ include('proprio/_form.html.twig', {form: new_form, action:'proprio.action.ajouter'|trans,
+        actionValue: 'new', action2:'proprio.action.retour'|trans, action2Value: 'return'}) }}
 {% endblock %}

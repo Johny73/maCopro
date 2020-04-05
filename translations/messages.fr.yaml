@@ -1,24 +1,39 @@
 proprio:
   nom:
-    label: 'nom'
+    label: 'Nom'
   prenom:
-    label: 'prenom'
-  voie:
-    label: 'voie'
-  codePostal:
-    label: 'code postal'
-  ville:
-    label: 'ville'
+    label: 'Prénom'
   numero:
-    label: 'numéro'
+    label: 'Numéro'
+  voie:
+    label: 'Voie'
+  codePostal:
+    label: 'Code postal'
+  ville:
+    label: 'Ville'
+  telPerso:
+    label: 'Téléphone domicile'
+  telPro:
+    label: 'Téléphone travail'
+  mail:
+    label: 'Email'
+  bic:
+    label: 'code BIC'
+  iban:
+    label: 'code IBAN'
+
   action:
-    ajouter: 'ajouter'
-    voir: 'consulter'
-    retour: 'retour liste propriétaires'
+    ajouter: 'Ajouter'
+    voir: 'Consulter'
+    modifier: 'Modifier'
+    retour: 'Retour liste propriétaires'
+    valider: 'Valider'
   new_page:
-    title: 'Ajout nouveau Copropriétaire'
+    title: 'Ajout d''un nouveau propriétaire'
   index_page:
     title: 'Les propriétaires'
+  edit_page:
+    title: 'Modification'
   show_page:
     title: 'Détail du '
 

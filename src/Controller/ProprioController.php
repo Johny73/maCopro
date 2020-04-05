@@ -18,8 +18,8 @@ class ProprioController extends AbstractController
 {
 
     /**
-    * @Route("", methods="GET")
-    */
+     * @Route("", methods="GET")
+     */
     public function index(ProprietairesRepository $repository)
     {
         $proprios = $repository->findAll();
@@ -33,32 +33,73 @@ class ProprioController extends AbstractController
     /**
      * @Route("/new", methods={"GET", "POST"})
      */
-    public function new (Request $request, EntityManagerInterface $manager)
+    public function new(Request $request, EntityManagerInterface $manager)
     {
-        $Proprio = new Proprietaires();
-        $form = $this->createForm(ProprioType::class, $Proprio);
+        $proprio = new Proprietaires();
+        $form = $this->createForm(ProprioType::class, $proprio);
 
         $form->HandleRequest($request);
 
-        if($form->isSubmitted() && $form->isValid()){
-            $manager->persist($Proprio);
-            $manager->flush();
+        if ($form->isSubmitted() && $form->isValid()) {
+            if (isset($_POST['return'])) {
+                return $this->redirectToRoute('app_proprio_index');
+            } elseif (isset($_POST['new'])) {
+                $manager->persist($proprio);
+                $manager->flush();
 
-            $this->addFlash('succes', 'Nouveau copropriétaire ajouté');
-            return $this->redirectToRoute('app_proprio_new');
+                $this->addFlash('succes', 'Nouveau copropriétaire ajouté');
+                return $this->redirectToRoute('app_proprio_index');
+            }
         }
-
-        return $this->render('proprio/new.html.twig',[
-            'new_form' => $form->createview(),
-        ]);
+        return $this->render('proprio/new.html.twig', [
+            'new_form' => $form->createview(),]);
     }
+
     /**
      * @Route("/{id}", requirements={"id": "\d+"})
      */
-    public function show(Proprietaires $proprio)
+    public function show(Proprietaires $proprio, Request $request, EntityManagerInterface $manager)
     {
+        $form = $this->createForm(ProprioType::class, $proprio, ['method' => 'POST']);
+        $form->HandleRequest($request);
+
+        if ($form->isSubmitted()) {
+            if (isset($_POST['edit'])) {
+                return $this->redirectToRoute('app_proprio_edit', array('id' => $proprio->getId()));
+            } elseif (isset($_POST['return'])) {
+                return $this->redirectToRoute('app_proprio_index');
+            }
+        }
+
         return $this->render('proprio/show.html.twig', [
-            'proprio' => $proprio,
-        ]);
+            'show_form' => $form->createview(),
+            'proprio' => $proprio,]);
+    }
+
+    /**
+     * @Route("/edit/{id}", requirements={"id": "\d+"})
+     */
+    public function edit(Proprietaires $proprio, Request $request, EntityManagerInterface $manager)
+    {
+        $form = $this->createForm(ProprioType::class, $proprio, ['method' => 'POST']);
+        $form->HandleRequest($request);
+
+        if ($form->isSubmitted()) {
+            if (isset($_POST['valid'])) {
+                $manager->persist($proprio);
+                $manager->flush();
+
+                $this->addFlash('succes', 'Nouveau copropriétaire ajouté');
+
+                return $this->redirectToRoute('app_proprio_show', array('id' => $proprio->getId()));
+            } elseif (isset($_POST['return'])) {
+                return $this->redirectToRoute('app_proprio_index');
+            }
+        }
+
+        return $this->render('proprio/edit.html.twig', [
+            'edit_form' => $form->createview(),
+            'proprio' => $proprio,]);
     }
 }
+

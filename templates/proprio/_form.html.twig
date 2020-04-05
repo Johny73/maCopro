@@ -1,4 +1,5 @@
 {{ form_start(form) }}
 {{ form_widget(form) }}
-<button>{{ action }}</button>
+<input type="submit" id="{{ actionValue }}" name="{{ actionValue }}" value="{{ action }}" />
+<input  type="submit" id="{{ action2Value }}" name="{{ action2Value }}" value="{{ action2 }}" />
 {{ form_end(form) }}

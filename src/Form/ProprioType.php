@@ -3,10 +3,7 @@
 namespace App\Form;
 
 use App\Entity\Proprietaires;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\DateType;
-use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -21,6 +18,12 @@ class ProprioType extends AbstractType
             ->add('voie')
             ->add('codePostal')
             ->add('ville')
+            ->add('telPerso')
+            ->add('telPro')
+            ->add('mail')
+            ->add('bic')
+            ->add('iban')
+
             ->getForm();
         ;
     }

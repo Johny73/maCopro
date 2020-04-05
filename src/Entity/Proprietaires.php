@@ -31,24 +31,49 @@ class Proprietaires
     private $prenom;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $numero;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $voie;
 
     /**
-    * @ORM\Column(type="string", length=255)
+    * @ORM\Column(type="string", length=255, nullable=true)
     */
     private $codePostal;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $ville;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $telPerso;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $telPro;
+     /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $mail;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $bic;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $iban;
+
 
     public function __construct()
     {
@@ -129,6 +154,66 @@ class Proprietaires
     public function setVille(?string $ville): self
     {
         $this->ville = strtoupper($ville);
+
+        return $this;
+    }
+
+    public function getTelPerso(): ?string
+    {
+        return $this->telPerso;
+    }
+
+    public function setTelPerso(?string $telPerso): self
+    {
+        $this->telPerso = $telPerso;
+
+        return $this;
+    }
+
+    public function getTelPro(): ?string
+    {
+        return $this->telPro;
+    }
+
+    public function setTelPro(?string $telPro): self
+    {
+        $this->telPro = $telPro;
+
+        return $this;
+    }
+
+    public function getMail(): ?string
+    {
+        return $this->mail;
+    }
+
+    public function setMail(?string $mail): self
+    {
+        $this->mail = $mail;
+
+        return $this;
+    }
+
+    public function getBic(): ?string
+    {
+        return $this->bic;
+    }
+
+    public function setBic(?string $bic): self
+    {
+        $this->bic = $bic;
+
+        return $this;
+    }
+
+    public function getIban(): ?string
+    {
+        return $this->iban;
+    }
+
+    public function setIban(?string $iban): self
+    {
+        $this->iban = $iban;
 
         return $this;
     }
