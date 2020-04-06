@@ -41,8 +41,8 @@ class Proprietaires
     private $voie;
 
     /**
-    * @ORM\Column(type="string", length=255, nullable=true)
-    */
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
     private $codePostal;
 
     /**
@@ -59,7 +59,7 @@ class Proprietaires
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $telPro;
-     /**
+    /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $mail;

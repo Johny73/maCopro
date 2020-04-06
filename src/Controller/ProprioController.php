@@ -102,4 +102,3 @@ class ProprioController extends AbstractController
             'proprio' => $proprio,]);
     }
 }
-
