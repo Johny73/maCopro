@@ -1,7 +1,110 @@
-{% form_theme form 'proprio/formThemes/themeProprio.html.twig' %}
-<script> </script>
+{# {% form_theme form 'proprio/formThemes/themeProprio.html.twig' %}  #}
+
 {{ form_start(form) }}
-{{ form_widget(form) }}
-<input type="submit" id="{{ actionValue }}" name="{{ actionValue }}" value="{{ action }}" />
-<input  type="submit" id="{{ action2Value }}" name="{{ action2Value }}" value="{{ action2 }}" />
+<div class='container'>
+    <div class="bloc_identite">
+        <div class='row'>
+            <div class='col-sm-2'>
+                {{'proprio.nom.label'|trans }}:
+            </div>
+            <div  class='col-sm-3'>
+                {{ form_widget(form.nom ) }}
+            </div>
+        </div>
+        <div class='row'>
+            <div class='col-sm-2'>
+                {{'proprio.prenom.label'|trans }}:
+            </div>
+            <div class='col-sm-3'>
+                {{ form_widget(form.prenom ) }}
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="bloc_adresse">
+        <div class='row'>
+            <div class='col-md-2'>
+                {{'proprio.numero.label'|trans }}:
+            </div>
+            <div  class='col-md-1'>
+                {{ form_widget(form.numero ) }}
+            </div>
+            <div class='col-md-1'>
+                {{'proprio.voie.label'|trans }}:
+            </div>
+            <div class='col-md-3'>
+                {{ form_widget(form.voie )}}
+            </div>
+        </div>
+        <div class='row'>
+            <div class='col-2'>
+                {{'proprio.codePostal.label'|trans }}:
+            </div>
+            <div  class='col-1'>
+                {{ form_widget(form.codePostal )}}
+            </div>
+            <div class='col-1'>
+                {{'proprio.ville.label'|trans }}:
+            </div>
+            <div class='col-3'>
+                {{ form_widget(form.ville )}}
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="bloc_contact">
+        <p>Téléphone</p>
+        <div class='row'>
+            <div class='col-2'>
+                {{'proprio.telPerso.label'|trans }}:
+            </div>
+            <div  class='col-2'>
+                {{ form_widget(form.telPerso ) }}
+            </div>
+        </div>
+        <div class='row'>
+            <div class='col-2'>
+                {{'proprio.telPro.label'|trans }}:
+            </div>
+            <div class='col-2'>
+                {{ form_widget(form.telPro ) }}
+            </div>
+        </div>
+        <div class='row'>
+            <div class='col-2'>
+                {{'proprio.mail.label'|trans }}:
+            </div>
+            <div class='col-2'>
+                {{ form_widget(form.mail ) }}
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="bloc_banque">
+        <p>Coordonnées bancaires</p>
+        <div class='row'>
+            <div class='col-2'>
+                {{'proprio.bic.label'|trans }}:
+            </div>
+            <div  class='col-2'>
+                {{ form_widget(form.bic ) }}
+            </div>
+        </div>
+        <div class='row'>
+            <div class='col-2'>
+                {{'proprio.iban.label'|trans }}:
+            </div>
+            <div class='col-2'>
+                {{ form_widget(form.iban ) }}
+            </div>
+        </div>
+    </div>
+</div>
+<br/>
+<div class='container'>
+    <div class='row'>
+        <input class='btn btn-primary col-sm-3' type='submit' id='{{ actionValue }}' name='{{ actionValue }}' value='{{ action }}' />
+        <input class='btn btn-primary col-sm-3' type='submit' id='{{ action2Value }}' name='{{ action2Value }}' value='{{ action2 }}' />
+    </div>
+</div>
 {{ form_end(form) }}

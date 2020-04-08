@@ -3,7 +3,7 @@
 
 {% block body %}
 
-    <h1>Détail de {{proprio.nom}} {{proprio.prenom}} </h1>
+    <h3>Fiche Propriétaire : {{proprio.nom}} {{proprio.prenom}} </h3>
 
     {{ include('proprio/_form.html.twig', {form: show_form, action:'proprio.action.retour'|trans,
         actionValue: 'return', action2:'proprio.action.modifier'|trans, action2Value: 'edit'}) }}
