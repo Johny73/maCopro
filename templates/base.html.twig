@@ -3,9 +3,13 @@
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}maCopro{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
+
+        {% block stylesheets %}
+            <link href="{{ asset('css/proprioStyles.css') }}" rel="stylesheet"/>
+        {% endblock %}
     </head>
     <body>
+    <script src="/s"></script>
         {% block body %}{% endblock %}
         {% block javascripts %}{% endblock %}
     </body>

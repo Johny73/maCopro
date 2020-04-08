@@ -12,8 +12,8 @@ class ProprioType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('nom')
-            ->add('prenom')
+            ->add('nom',null, ['label_attr'  => ['class' =>'test',] ,])
+            ->add('prenom',null, ['attr'  => ['class' =>'test',] ,])
             ->add('numero')
             ->add('voie')
             ->add('codePostal')
@@ -33,6 +33,7 @@ class ProprioType extends AbstractType
         $resolver->setDefaults([
             'data_class' => Proprietaires::class,
             'label_format' => 'proprio.%name%.label'
+
         ]);
     }
 }
