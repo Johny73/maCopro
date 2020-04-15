@@ -1,0 +1,19 @@
+VERIFICATION numéro de téléphone ) vérifier
+
+if (!preg_match("#^([-/+,;. ]?[0-9]{1}){6,12}$#", $_POST[$input])) {
+    $erreur = 'Le champ TEL n\'est pas au bon format.';
+}
+
+
+pour formulaire SHOW enlever le bouton du _FORM et mettre dans show.html.twig deux boutons, 1 pour aller vers modifier et l'autre pour retourner à la liste
+
+- email (a voir si pas utilisé pour la connexion)
+
+Download de la bibliothèque JQuery
+https://jquery.com/download/
+
+insertion de la bibliothèque JQuery
+<script src="folder_name/jquery-1.12.0.js"></script>
+
+OU
+<script src="//code.jquery.com/jquery-1.12.0.min.js">
