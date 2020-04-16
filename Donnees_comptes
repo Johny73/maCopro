@@ -1,0 +1,18 @@
+INSERT INTO `comptes` (`id`, `num_compte`, `label_compte`, `imput_locataire`) VALUES 
+(NULL,	'601100', 'Eau', 1),
+(NULL,	'602000', 'Electricité', 1),
+(NULL,	'604000', 'Produits entret + petit équip.', 1),
+(NULL,	'604401', 'Fournisseurs', 0),
+(NULL,	'606000', 'Fournitures', 0),
+(NULL,	'611000', 'Nettoyage', 1),
+(NULL,	'613520', 'Location compteurs eau', 0),
+(NULL,	'615000', 'Entretien et petites réparations', 0),
+(NULL,	'616100', 'Assurance multirisques', 0),
+(NULL,	'621100', 'Rémunération syndic', 0),
+(NULL,	'621250', 'Frais Assemblée', 0),
+(NULL,	'621300', 'Frais postaux', 0),
+(NULL,	'671', 'Travaux décidés par l\'assemblée générale', 0),
+(NULL,	'6223', 'Autres honoraires', 0),
+(NULL,	'623800', 'Agios et frais bancaires', 0),
+(NULL,	'701000', 'Provisions sur opérations courantes', 0),
+(NULL,	'702', 'Provisions travaux', 0);
