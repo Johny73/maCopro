@@ -28,6 +28,7 @@ proprio:
     modifier: 'Modifier'
     retour: 'Retour liste propriétaires'
     valider: 'Valider'
+    allerVersProprio: 'Vers la liste des propriétaires'
   new_page:
     title: 'Ajout d''un nouveau propriétaire'
   index_page:
