@@ -1,11 +1,12 @@
- {# {% extends '/compta/index.html.twig' %}  #}
+ {% extends '/compta/index.html.twig' %} 
 
-{{form_start(new_compta_form)}}
+
 
 {% block body %}
-    
+    {{ include('compta/_form.html.twig', {form: new_compta_form}) }}
+
 
 {% endblock %}
 
-{{form_end(new_compta_form)}}
+
 

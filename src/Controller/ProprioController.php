@@ -52,7 +52,7 @@ class ProprioController extends AbstractController
             }
         }
         return $this->render('proprio/new.html.twig', [
-            'new_form' => $form->createview(),]);
+            'new_proprio_form' => $form->createview(),]);
     }
 
     /**
