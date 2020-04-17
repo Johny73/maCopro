@@ -92,7 +92,8 @@ class Proprietaires
 
     public function setNom(string $nom): self
     {
-        $this->nom = strtoupper($nom);
+        /*$this->nom = strtoupper($nom);*/
+        $this->nom = mb_strtoupper($nom);
 
         return $this;
     }
