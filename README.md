@@ -13,13 +13,6 @@ Elle permet d'administrer et/ou d'accèder aux éléments suivants :
      
 (voir si on garde le board)
 
-### Guide d'utilisation
-Lors de votre première connexion sur la page d'accueil, vous devez vous créer un compte
-Lors de vos prochaines connexions, vous devrez vous connecter avec votre login et votre mot de passe (renseignés lors de votre inscription).  
-En fonction de votre profil (administrateur ou co-propriétaire), vous aurez ainsi accès à tout ou parties des éléments du site, afin de pouvoir
-participer à votre niveau à la gestion de votre co-propriété
-
-
 ### Architecture technique :
 * Apache 
 * Base de données : MySql
