@@ -38,11 +38,11 @@ class ArticlesController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="article")
+     * @Route("/{slug}", name="article")
      */
-    public function article($id)
+    public function article($slug)
     {
-        $article = $this->getDoctrine()->getRepository(Articles::class)->findOneBy(['id' => $id]);
+        $article = $this->getDoctrine()->getRepository(Articles::class)->findOneBy(['slug' => $slug]);
         if(!$article){
             throw $this->createNotFoundException('L\'article n\'existe pas');
         }
