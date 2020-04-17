@@ -18,4 +18,13 @@ class ComptesRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Comptes::class);
     }
+
+    public function findComptesUtilises()
+    {
+        return $this->createQueryBuilder('a')
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
 }

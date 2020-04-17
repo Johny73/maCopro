@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\ComptesREpository")
+ * @ORM\Entity(repositoryClass="App\Repository\ComptesRepository")
  */
 class Comptes
 {
@@ -29,6 +29,12 @@ class Comptes
      * @Assert\NotBlank()
      */
     private $labelCompte;
+
+    /**
+     * @ORM\Column(type="string", length=100)
+     * @Assert\NotBlank()
+     */
+    private $typeCompte;
 
     /**
      * @ORM\Column(type="boolean", nullable=false)
@@ -66,6 +72,18 @@ class Comptes
     public function setLabelCompte(string $labelCompte): self
     {
         $this->labelCompte = ucwords(strtolower($labelCompte));
+
+        return $this;
+    }
+
+    public function getTypeCompte(): ?string
+    {
+        return $this->typeCompte;
+    }
+
+    public function setTypeCompte(string $typeCompte): self
+    {
+        $this->typeCompte = strtoupper($typeCompte);
 
         return $this;
     }

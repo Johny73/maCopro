@@ -86,10 +86,9 @@ class ProprioController extends AbstractController
 
         if ($form->isSubmitted()) {
             if (isset($_POST['valid'])) {
-                $manager->persist($proprio);
                 $manager->flush();
 
-                $this->addFlash('succes', 'Nouveau copropriétaire ajouté');
+                $this->addFlash('succes', 'Modification apportée');
 
                 return $this->redirectToRoute('app_proprio_show', array('id' => $proprio->getId()));
             } elseif (isset($_POST['return'])) {
