@@ -1,23 +1,18 @@
-## Page accueil
+## Page Accueil : 
 
-url : macopro/accueil
+Url: macopro/accueil
 
-Description :  
-Page d'accueil permettant aux utilisateurs enregistrés de se connecter, et à ceux non enregistrés de créer un compte
+##### (Syndic = Administrateur)
 
+* Vie sociale de la co-propriété.
+* Affichage de billets et articles concernant la vie de la copropriété.
 
-Fonctionnalité principale : 
-Se logger 
- 
+Ces articles sont commentables permettant ainsi l'échange et le partage d'information entre syndic/co-propriétaires
 
-Règle d'accès :
-Tous utilisateurs et visiteurs
+Règle d'accès : co-propriétaires et syndics loggés
 
 Zones de la page : 
-Phrase décrivant le site
-Logo maCopro
-Formulaire de connexion comprenant champ : nom utilisateur et champ : mot de passe
-Encart cliquable pour mot de passe oublié
-Footer avec lien vers mentions légales et lien vers nous contacter
-
-Contenu :
+* Barre de navigation
+* Logo
+* Articles et vue des commentaires sous chaque article
+* Agenda
