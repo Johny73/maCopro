@@ -16,3 +16,4 @@ Zones de la page :
 * Logo
 * Articles et vue des commentaires sous chaque article
 * Agenda
+* Consultation de documents
