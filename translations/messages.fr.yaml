@@ -23,7 +23,7 @@ proprio:
     label: 'code IBAN'
 
   action:
-    ajouter: 'Ajouter'
+    ajouter: 'Ajouter nouveau'
     voir: 'Consulter'
     modifier: 'Modifier'
     retour: 'Retour liste propriétaires'

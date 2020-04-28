@@ -1,5 +1,13 @@
-{{ form_start(form) }}
+{% use "form_div_layout.html.twig" %}
 
+{{ form_start(form) }}
+<div class="container">
+    {{ form_row(form.date) }}
+    {{ form_row(form.montant) }}
+    {{ form_row(form.choixCompte1) }}
+    {{ form_row(form.choixCompte2) }}
+    {{ form_row(form.commentaire) }}
+</div>
 
 {{ form_end(form) }}
 

@@ -7,6 +7,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Comptes;
 use App\Entity\Journal;
+use App\Form\HistoComptaType;
+use App\Repository\JournalRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
@@ -25,10 +27,15 @@ class ComptaController extends AbstractController
     /**
      * @Route("", methods="GET")
      */
-      public function index()
+      public function index(JournalRepository $repository)
     {
+        $ecritures = $repository->findBy(array(),array('date'=>'DESC'));
+        $journal = new Journal();
+        $form = $this->createForm(HistoComptaType::class, $journal);
+
         return $this->render('compta/index.html.twig', [
-            'controller_name' => 'ComptaController',
+            'histo_form' => $form->createView(),
+            'ecritures' => $ecritures,
         ]);
     }
 

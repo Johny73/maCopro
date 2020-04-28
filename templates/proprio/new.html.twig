@@ -1,9 +1,13 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>{{ 'proprio.new_page.title'|trans }}</h1>
+    <h2>{{ 'proprio.new_page.title'|trans }}</h2>
 
 
-    {{ include('proprio/_form.html.twig', {form: new_proprio_form, action:'proprio.action.ajouter'|trans,
-        actionValue: 'new', action2:'proprio.action.retour'|trans, action2Value: 'return'}) }}
+    {{ include('proprio/_form.html.twig', {form: new_proprio_form, action2:'proprio.action.ajouter'|trans,
+        action2Value: 'new', action:'proprio.action.retour'|trans, actionValue: 'return'}) }}
 {% endblock %}
+
+ {% block javascripts %}
+
+ {% endblock %}

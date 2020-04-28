@@ -1,0 +1,28 @@
+{% use "form_div_layout.html.twig" %}
+
+{{ form_start(form) }}
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Date</th>
+            <th scope="col">Compte Débit</th>
+            <th scope="col">Compte Crédit</th>
+            <th scope="col">Montant</th>
+            <th scope="col">Commentaire</th>
+        </tr>
+    </thead>
+    <tbody>
+        {%  for ecriture in ecritures  %}
+            <tr>
+            <td>{{ ecriture.date|date('d/m/Y') }}</th>
+            <td>{{ ecriture.compteDebit }}</td>
+            <td>{{ ecriture.compteCredit }}</td>
+            <td>{{ ecriture.montant|format_currency('EUR', {fraction_digit: 2}) }}</td>
+            <td>{{ ecriture.commentaire }}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{{ form_end(form, {'render_rest': false}) }}
+

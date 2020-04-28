@@ -12,8 +12,8 @@ class ProprioType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('nom',null, ['label_attr'  => ['class' =>'test',] ,])
-            ->add('prenom',null, ['attr'  => ['class' =>'test',] ,])
+            ->add('nom')
+            ->add('prenom')
             ->add('numero')
             ->add('voie')
             ->add('codePostal')
