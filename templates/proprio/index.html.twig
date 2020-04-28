@@ -3,20 +3,23 @@
 
 {% block body %}
 
-    {% for label, messages in app.flashes %} {# ce premier boucle pour regrouper les messages par type#}
-        {% for message in messages %}        {# ce second pour afficher tous les messages du type#}
-            <div class="{{  label }}">
+     {% for message in app.flashes('success') %}
+            <div class="alert alert-success">
                 {{ message }}
             </div>
         {% endfor %}
-    {% endfor %}
 
     <h1>{{ 'proprio.index_page.title'|trans }}</h1>
-    <ul>
-        {%  for proprio in proprios %}
-            <li>{{ proprio.nom }} {{ proprio.prenom }} <a href="{{ path('app_proprio_show', { id: proprio.id }) }}">  {{'proprio.action.voir'|trans  }}  </a></li>
-        {% endfor %}
-    </ul>
+    <div class="container">
+        <div class="row">
+            <ul class="col-6">
+                {%  for proprio in proprios %}
+                    <li class="row">
+                        <span class="col"> {{ proprio.nom }} {{ proprio.prenom }} </span> <a class="col" href="{{ path('app_proprio_show', { id: proprio.id }) }}">  {{'proprio.action.voir'|trans  }}  </a></li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
 
     <a href="{{ path('app_proprio_new') }}">  {{'proprio.action.ajouter'|trans  }}  </a>
 {% endblock %}

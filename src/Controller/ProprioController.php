@@ -47,7 +47,7 @@ class ProprioController extends AbstractController
                 $manager->persist($proprio);
                 $manager->flush();
 
-                $this->addFlash('succes', 'Nouveau copropriétaire ajouté');
+                $this->addFlash('success', 'Nouveau copropriétaire ajouté');
                 return $this->redirectToRoute('app_proprio_index');
             }
         }
