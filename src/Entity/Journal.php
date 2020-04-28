@@ -23,11 +23,13 @@ class Journal
 
     /**
      * @ORM\Column(type="integer", nullable=true)
+     * @ORM\ManyToOne(targetEntity="Comptes")
      */
     private $compteDebit;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
+     * @ORM\ManyToOne(targetEntity="Comptes")
      */
     private $compteCredit;
 

@@ -5,20 +5,20 @@
 <div class="container mx-1">
     <table class="table">
         <thead>
-            <tr class="row  text-center">
-                <th scope="col" class="col-2">Date</th>
-                <th scope="col" class="col-2">Compte Débit</th>
-                <th scope="col" class="col-2">Compte Crédit</th>
-                <th scope="col" class="col-2">Montant</th>
+            <tr class="row  text-left">
+                <th scope="col" class="col-1">Date</th>
+                <th scope="col" class="col-3">Compte Débit</th>
+                <th scope="col" class="col-3">Compte Crédit</th>
+                <th scope="col" class="col-2  text-center">Montant</th>
                 <th scope="col" class="col-3">Commentaire</th>
             </tr>
         </thead>
         <tbody>
             {%  for ecriture in ecritures  %}
                 <tr class="row">
-                    <td class="col-2">{{ ecriture.date|date('d/m/Y') }}</th>
-                    <td class="col-2">{{ ecriture.compteDebit }}</td>
-                    <td class="col-2">{{ ecriture.compteCredit }}</td>
+                    <td class="col-1">{{ ecriture.date|date('d/m/Y') }}</th>
+                    <td class="col-3">{{ ecriture.compteDebit }}</td>
+                    <td class="col-3">{{ ecriture.compteCredit }}</td>
                     <td class="text-right col-2">{{ ecriture.montant|format_currency('EUR', {fraction_digit: 2}) }}</td>
                     <td class="col-3">{{ ecriture.commentaire }}</td>
                 </tr>

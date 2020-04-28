@@ -29,7 +29,7 @@ class ComptaController extends AbstractController
      */
       public function index(JournalRepository $repository)
     {
-        $ecritures = $repository->findBy(array(),array('date'=>'DESC'));
+        $ecritures = $repository->findWithLabels();
         $journal = new Journal();
         $form = $this->createForm(HistoComptaType::class, $journal);
 
