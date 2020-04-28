@@ -47,12 +47,12 @@ class ProprioController extends AbstractController
                 $manager->persist($proprio);
                 $manager->flush();
 
-                $this->addFlash('succes', 'Nouveau copropriétaire ajouté');
+                $this->addFlash('success', 'Nouveau copropriétaire ajouté');
                 return $this->redirectToRoute('app_proprio_index');
             }
         }
         return $this->render('proprio/new.html.twig', [
-            'new_form' => $form->createview(),]);
+            'new_proprio_form' => $form->createview(),]);
     }
 
     /**
@@ -86,10 +86,9 @@ class ProprioController extends AbstractController
 
         if ($form->isSubmitted()) {
             if (isset($_POST['valid'])) {
-                $manager->persist($proprio);
                 $manager->flush();
 
-                $this->addFlash('succes', 'Nouveau copropriétaire ajouté');
+                $this->addFlash('succes', 'Modification apportée');
 
                 return $this->redirectToRoute('app_proprio_show', array('id' => $proprio->getId()));
             } elseif (isset($_POST['return'])) {
