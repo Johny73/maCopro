@@ -103,8 +103,9 @@
 <br/>
 <div class='container'>
     <div class='row'>
-        <input class='btn btn-primary col-sm-3' type='submit' id='{{ actionValue }}' name='{{ actionValue }}' value='{{ action }}' />
+        <a class="btn btn-primary" href="{{ path('app_proprio_index') }}"> {{ 'proprio.action.retour'|trans }} </a>
         <input class='btn btn-primary col-sm-3 offset-1' type='submit' id='{{ action2Value }}' name='{{ action2Value }}' value='{{ action2 }}' />
     </div>
+
 </div>
 {{ form_end(form) }}

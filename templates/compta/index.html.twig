@@ -8,11 +8,14 @@
 
 {% block bodytitle %}
     <h1>Journal</h1>
-    <p>Merci de saisir ci-dessous les nouveaux éléments</p>
-<nav class="my-3">
+    
+<nav class="my-3 navbar navbar-expand-lg navbar-light bg-light">
         <ul class="nav">
             <li class="nav-item">
-                <a class="nav-link" href="{{ path('app_compta_new') }} ">Nouvellle entrée</a>
+                <a class="btn btn-primary m-2" href="{{ path('app_compta_index') }} ">Historique</a>
+            </li>
+            <li class="nav-item">
+                <a class="btn btn-primary m-2" href="{{ path('app_compta_new') }} ">Nouvellle entrée</a>
             </li>
         </ul>
 </nav>
@@ -21,6 +24,5 @@
 
 
 {% block body %}
-
-
+        {{ include('compta/_histoForm.html.twig', {form:histo_form}) }}
 {% endblock %}

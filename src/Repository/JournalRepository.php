@@ -20,31 +20,26 @@ class JournalRepository extends ServiceEntityRepository
     }
 
     // /**
-    //  * @return Journal[] Returns an array of Journal objects
+    //  * @return Journal[]
     //  */
-    /*
-    public function findByExampleField($value)
+    public function findWithLabels()
     {
-        return $this->createQueryBuilder('j')
-            ->andWhere('j.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('j.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
+        $conn = $this->getEntityManager()
+        ->getConnection();
+    $sql = '
+        SELECT a.id, a.date, b.label_compte AS compteDebit, c.label_compte AS compteCredit, a.montant, a.commentaire
+        FROM Journal a
+        JOIN comptes b 
+            ON a.compte_debit = b.id
+        JOIN comptes c
+            ON a.compte_credit = c.id
+        ORDER BY a.date DESC
+        ';
+    $stmt = $conn->prepare($sql);
+    $stmt->execute();
+    return $stmt->fetchAll();
     }
-    */
 
-    /*
-    public function findOneBySomeField($value): ?Journal
-    {
-        return $this->createQueryBuilder('j')
-            ->andWhere('j.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
-    */
+
+
 }

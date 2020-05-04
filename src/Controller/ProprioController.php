@@ -24,7 +24,6 @@ class ProprioController extends AbstractController
     {
         $proprios = $repository->findAll();
 
-
         return $this->render('proprio/index.html.twig', [
             'proprios' => $proprios,
         ]);
@@ -38,18 +37,16 @@ class ProprioController extends AbstractController
         $proprio = new Proprietaires();
         $form = $this->createForm(ProprioType::class, $proprio);
 
-        $form->HandleRequest($request);
+        if ($request->isMethod('POST')) {
+            $form->submit($request->request->get($form->getName()));
+        };
 
         if ($form->isSubmitted() && $form->isValid()) {
-            if (isset($_POST['return'])) {
-                return $this->redirectToRoute('app_proprio_index');
-            } elseif (isset($_POST['new'])) {
                 $manager->persist($proprio);
                 $manager->flush();
 
                 $this->addFlash('success', 'Nouveau copropriétaire ajouté');
                 return $this->redirectToRoute('app_proprio_index');
-            }
         }
         return $this->render('proprio/new.html.twig', [
             'new_proprio_form' => $form->createview(),]);
@@ -66,8 +63,6 @@ class ProprioController extends AbstractController
         if ($form->isSubmitted()) {
             if (isset($_POST['edit'])) {
                 return $this->redirectToRoute('app_proprio_edit', array('id' => $proprio->getId()));
-            } elseif (isset($_POST['return'])) {
-                return $this->redirectToRoute('app_proprio_index');
             }
         }
 
@@ -91,8 +86,6 @@ class ProprioController extends AbstractController
                 $this->addFlash('succes', 'Modification apportée');
 
                 return $this->redirectToRoute('app_proprio_show', array('id' => $proprio->getId()));
-            } elseif (isset($_POST['return'])) {
-                return $this->redirectToRoute('app_proprio_index');
             }
         }
 
