@@ -1,0 +1,9 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}maCopro{% endblock %}
+
+{% block body %}
+    <h1>Page d'accueil</h1>
+    {# Ce lien changera automatiquement en cas de modification des routes #}
+    <p><a href="{{ path('infos_articles') }}">Liste des articles</a></p>
+{% endblock %}
