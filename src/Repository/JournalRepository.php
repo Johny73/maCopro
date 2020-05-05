@@ -40,6 +40,21 @@ class JournalRepository extends ServiceEntityRepository
     return $stmt->fetchAll();
     }
 
-
-
+    /**
+    * @return Journal[] Returns an array of Journal object
+    */
+    public function findJournalTdb($yearJournal)
+    {
+        $response = $this->createQueryBuilder('j')
+        ->leftJoin('j.compteDebit', 'c')
+        ->leftJoin('j.compteCredit', 'd')
+        ->select('c.labelCompte as compteDebit, d.labelCompte as compteCredit, sum(j.montant) as debit, sum(j.montant) as credit')
+        ->andWhere('YEAR(j.date) LIKE :searchTerm')
+        ->setParameter('searchTerm', '%'.$yearJournal.'%')
+        ->groupby('c.labelCompte, d.labelCompte')
+        ->getQuery()
+        ->getResult()
+        ;
+        return $response;
+    }
 }

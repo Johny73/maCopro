@@ -8,7 +8,19 @@
 
 {% block bodytitle %}
     <h1>Journal</h1>
-    <div id="journalTdb"></div>
+  
+ {% if journal is defined %} 
+    <div id="tdb">
+        <ul>
+            {% for compte in journal %}  
+            <li> {{ compte.compteDebit }}  debit: {{compte.debit}} , 
+            {{ compte.compteCredit }}  credit: {{compte.credit}}  </li>
+
+            {% endfor %}
+        </ul>
+    </div>
+{% endif %}
+
     
 <nav class="my-3 navbar navbar-expand-lg navbar-light bg-light">
         <ul class="nav">
@@ -16,7 +28,7 @@
                 <a class="btn btn-primary m-2" href="{{ path('app_compta_index') }} ">Historique</a>
             </li>
             <li class="nav-item">
-                <a class="btn btn-primary m-2" href="{{ path('app_compta_new') }} ">Nouvellle entrée</a>
+                <a class="btn btn-primary m-2" href="{{ path('app_compta_new') }} ">Nouvelle entrée</a>
             </li>
         </ul>
 </nav>

@@ -16,19 +16,22 @@ use Symfony\Component\HttpFoundation\Request;
  * @Route("/compta")
  */
 class ComptaController extends AbstractController
+//Pour la mise en place de modification de journal, regarder boardgames.index
 {
     /**
      * @Route("", methods="GET")
      */
       public function index(JournalRepository $repository)
-    {
-        $ecritures = $repository->findWithLabels();
+    {   $year = 2020;
+        $ecritures = $repository->findWithLabels($year);
+        $tdb = $repository->findJournalTdb(2020);
         $journal = new Journal();
         $form = $this->createForm(HistoComptaType::class, $journal);
 
         return $this->render('compta/index.html.twig', [
             'histo_form' => $form->createView(),
             'ecritures' => $ecritures,
+            'journal' => $tdb,
         ]);
     }
 
