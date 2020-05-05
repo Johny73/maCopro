@@ -3,10 +3,10 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-                <a class="nav-link" href="/home">Accueil</span></a>
+                <a class="nav-link" href="/infos">Accueil</span></a>
             </li>
             <li class="nav-item">
-            <a class="nav-link" href="/admin">Admin</a>
+            <a class="nav-link" href="/login">Admin</a>
             </li>
             {# <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="/admin" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -28,8 +28,13 @@
                 <a class="nav-link" href="#">Editions</a>
             </li>
         </ul>
-        <div class="my-2 my-lg-0">
-            <button class="btn btn-outline btn-primary" id="logout" value="logout" >Déconnexion</a>
+
+        {% if app.user %}
+        <div class="mb-3">
+            Bienvenue {{ app.user.username }}
+        
+            <a class="btn btn-outline btn-primary" href="{{ path('app_logout') }}">Déconnexion</a>
         </div>
+        {% endif %}
     </div>
 </nav>
