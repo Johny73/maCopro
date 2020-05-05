@@ -22,13 +22,11 @@ class Journal
     private $date;
 
     /**
-     * @ORM\Column(type="integer", nullable=true)
      * @ORM\ManyToOne(targetEntity="Comptes")
      */
     private $compteDebit;
 
     /**
-     * @ORM\Column(type="integer", nullable=true)
      * @ORM\ManyToOne(targetEntity="Comptes")
      */
     private $compteCredit;
@@ -60,24 +58,25 @@ class Journal
         return $this;
     }
 
-    public function getCompteDebit(): ?int
+    public function getCompteDebit(): ?Comptes
     {
         return $this->compteDebit;
     }
 
-    public function setCompteDebit(?int $compteDebit): self
+
+      public function setCompteDebit(?Comptes $compteDebit): self
     {
         $this->compteDebit = $compteDebit;
 
         return $this;
     }
 
-    public function getCompteCredit(): ?int
+    public function getCompteCredit(): ?Comptes
     {
         return $this->compteCredit;
     }
 
-    public function setCompteCredit(?int $compteCredit): self
+    public function setCompteCredit(?Comptes $compteCredit): self
     {
         $this->compteCredit = $compteCredit;
 

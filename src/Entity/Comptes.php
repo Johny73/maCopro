@@ -47,6 +47,11 @@ class Comptes
         $this->comptes = new ArrayCollection();
     }
 
+    public function __toString(): string
+    {
+        return $this->labelCompte;
+    }
+
     public function getId(): ?int
     {
         return $this->id;
