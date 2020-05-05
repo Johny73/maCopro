@@ -23,7 +23,7 @@ security:
             logout:
                 path: app_logout
                 # where to redirect after logout
-                target: infos_articles
+                target: /
 
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#firewalls-authentication
