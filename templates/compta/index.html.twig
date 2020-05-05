@@ -8,6 +8,7 @@
 
 {% block bodytitle %}
     <h1>Journal</h1>
+    <div id="journalTdb"></div>
     
 <nav class="my-3 navbar navbar-expand-lg navbar-light bg-light">
         <ul class="nav">
@@ -25,4 +26,9 @@
 
 {% block body %}
         {{ include('compta/_histoForm.html.twig', {form:histo_form}) }}
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('js/journalTdb.js') }}"/>
+
 {% endblock %}

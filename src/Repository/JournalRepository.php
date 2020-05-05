@@ -30,9 +30,9 @@ class JournalRepository extends ServiceEntityRepository
         SELECT a.id, a.date, b.label_compte AS compteDebit, c.label_compte AS compteCredit, a.montant, a.commentaire
         FROM Journal a
         JOIN comptes b 
-            ON a.compte_debit = b.id
+            ON a.compte_debit_id = b.id
         JOIN comptes c
-            ON a.compte_credit = c.id
+            ON a.compte_credit_id = c.id
         ORDER BY a.date DESC
         ';
     $stmt = $conn->prepare($sql);
