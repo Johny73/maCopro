@@ -3,12 +3,13 @@
 {% block title %}Informations{% endblock %}
 
 {% block body %}
-
     {% for article in articles %}
-        <h1  ><a href="{{ path('infos_article', {'slug': article.slug}) }}">{{ article.titre }}</a></h1>
+    <div class="col-6 mx-auto border-bottom">
+        <h1 class="text-center"><a href="{{ path('infos_article', {'slug': article.slug}) }}">{{ article.titre }}</a></h1>
         <p>Publié le {{ article.createdAt|date('d/m/Y à h\\hi') }}</p>
         <div>{{ article.contenu|raw }}</div>
-        <h2>Commentaires ({{ article.commentaires|length }})</h2>
+        <h5>Commentaires ({{ article.commentaires|length }})</h5>
+    </div>
     {% endfor %}
     {{ knp_pagination_render(articles) }}
 {% endblock %}

@@ -17,23 +17,15 @@ class CommentaireFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('email', EmailType::class, [
-                'attr' => [
-                    'class' => 'form-control col-3'
-                ]
-            ])
             ->add('pseudo', TextType::class, [
                 'attr' => [
-                    'class' => 'form-control col-3'
+                    'class' => 'form-control col-10'
                 ]
             ])
             ->add('contenu', TextareaType::class, [
                 'attr' => [
-                    'class' => 'form-control col-3'
+                    'class' => 'form-control col-10'
                 ]
-            ])
-            ->add('rgpd', CheckboxType::class, [
-                'label' => 'J\'accepte la collecte de mes données'
             ])
             ->add('Envoyer', SubmitType::class, [
                 'attr' => [

@@ -3,18 +3,27 @@
 {% block title %}{{ article.titre }}{% endblock %}
 
 {% block body %}
-    <h1>{{ article.titre }}</h1>
+<div class="col-6 mx-auto">
+    <h1 class="text-center">{{ article.titre }}</h1>
     <p>Publié le {{ article.createdAt|date('d/m/Y à h\\hi') }}</p>
+    <div>{{ article.image }}</div>
     <div>{{ article.contenu|raw }}</div>
-    <h2>Commentaires ({{ article.commentaires|length }})</h2>
+</div>
+<div class="col-6 mx-auto">
+    <h3 class="text-center">Commentaires ({{ article.commentaires|length }})</h3>
     {% for commentaire in article.commentaires %}
+    <div class="mx-auto border-bottom">
         <p>Publié par {{ commentaire.pseudo }}</p>
         <div>{{ commentaire.contenu }}</div>
+    </div>
     {% else %}
+    <div class="mx-auto border border-dark rounded">
         <p>Il n'y a pas de commentaires</p>
+    </div>
     {% endfor %}
-
-    <h2>Ajouter un commentaire</h2>
+</div>
+<div class="col-6 mx-auto border border-dark rounded">
+    <h2 class="text-center">Ajouter un commentaire</h2>
     {{ form(commentForm) }}
-
+</div>
 {% endblock %}
