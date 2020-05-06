@@ -5,6 +5,7 @@ namespace App\Repository;
 use App\Entity\Journal;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
+use Doctrine\ORM\EntityManagerInterface;
 
 /**
  * @method Journal|null find($id, $lockMode = null, $lockVersion = null)
@@ -45,13 +46,41 @@ class JournalRepository extends ServiceEntityRepository
         $response = $this->createQueryBuilder('j')
         ->leftJoin('j.compteDebit', 'c')
         ->leftJoin('j.compteCredit', 'd')
-        ->select('c.labelCompte as compteDebit, d.labelCompte as compteCredit, sum(j.montant) as debit, sum(j.montant) as credit')
+        ->select('c.id as idCompteDebit, d.id as idCompteCredit, sum(j.montant) as debit, sum(j.montant) as credit')
         ->andWhere('YEAR(j.date) LIKE :searchTerm')
         ->setParameter('searchTerm', '%'.$yearJournal.'%')
         ->groupby('c.labelCompte, d.labelCompte')
         ->getQuery()
         ->getResult()
         ;
+        return $response;
+    }
+
+
+    public function createJournalTdb(ComptesRepository $comptes, $yearJournal){
+        $journalAggregate = $this->findJournalTdb($yearJournal);
+        $listeComptes = $comptes->findAll();
+        
+        $response = Array();
+        $varId = 0;
+        $varMontantDebit = 0;
+        $varMontantCredit = 0;
+        foreach ($listeComptes as $compte){
+            $varMontantDebit = 0;
+            $varMontantCredit = 0;
+            $varId = $compte->getId();
+            foreach ($journalAggregate as $detailAggregate) {
+                if ($detailAggregate['idCompteDebit'] === $varId){
+                    $varMontantDebit +=  $detailAggregate['debit'];
+                }
+                if ($detailAggregate['idCompteCredit'] === $varId){
+                    $varMontantCredit +=  $detailAggregate['credit'];
+                }
+
+            }
+            Array_push($response, [$varId, $varMontantDebit, $varMontantCredit]);
+            
+        }
         return $response;
     }
 }

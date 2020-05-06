@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-
+use App\Entity\Comptes;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Journal;
@@ -21,10 +21,11 @@ class ComptaController extends AbstractController
     /**
      * @Route("", methods="GET")
      */
-      public function index(JournalRepository $repository)
+      public function index(JournalRepository $repository, EntityManagerInterface $em)
     {   $year = 2020;
-        $ecritures = $repository->findWithLabels($year);
-        $tdb = $repository->findJournalTdb(2020);
+        $ecritures = $repository->findWithLabels();
+        $comptesRepository = $em->getRepository(Comptes::class);
+        $tdb = $repository->createJournalTdb($comptesRepository, $year);
         $journal = new Journal();
         $form = $this->createForm(HistoComptaType::class, $journal);
 

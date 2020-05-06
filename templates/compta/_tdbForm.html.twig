@@ -3,9 +3,7 @@
     <div id="tdb">
         <ul>
             {% for compte in journal %}  
-            <li> {{ compte.compteDebit }}  debit: {{compte.debit}} , 
-            {{ compte.compteCredit }}  credit: {{compte.credit}}  </li>
-
+                            <li>  {{ compte[0] }} , {{compte[1]}} , {{compte[2]}}
             {% endfor %}
         </ul>
     </div>
