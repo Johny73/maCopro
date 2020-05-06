@@ -9,16 +9,8 @@
 {% block bodytitle %}
     <h1>Journal</h1>
   
- {% if journal is defined %} 
-    <div id="tdb">
-        <ul>
-            {% for compte in journal %}  
-            <li> {{ compte.compteDebit }}  debit: {{compte.debit}} , 
-            {{ compte.compteCredit }}  credit: {{compte.credit}}  </li>
-
-            {% endfor %}
-        </ul>
-    </div>
+{% if journal is defined %} 
+     {{ include('compta/_tdbForm.html.twig', {form:histo_form}) }}
 {% endif %}
 
     

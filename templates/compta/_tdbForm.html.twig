@@ -1,0 +1,13 @@
+{% use "form_div_layout.html.twig" %}
+
+    <div id="tdb">
+        <ul>
+            {% for compte in journal %}  
+            <li> {{ compte.compteDebit }}  debit: {{compte.debit}} , 
+            {{ compte.compteCredit }}  credit: {{compte.credit}}  </li>
+
+            {% endfor %}
+        </ul>
+    </div>
+{{ form_end(form,  {'render_rest': false}) }}
+
