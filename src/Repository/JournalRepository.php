@@ -19,26 +19,23 @@ class JournalRepository extends ServiceEntityRepository
         parent::__construct($registry, Journal::class);
     }
 
-    // /**
-    //  * @return Journal[]
-    //  */
+    /**
+     * @return Journal[]
+     */
     public function findWithLabels()
     {
-        $conn = $this->getEntityManager()
-        ->getConnection();
-    $sql = '
-        SELECT a.id, a.date, b.label_compte AS compteDebit, c.label_compte AS compteCredit, a.montant, a.commentaire
-        FROM Journal a
-        JOIN comptes b 
-            ON a.compte_debit_id = b.id
-        JOIN comptes c
-            ON a.compte_credit_id = c.id
-        ORDER BY a.date DESC
-        ';
-    $stmt = $conn->prepare($sql);
-    $stmt->execute();
-    return $stmt->fetchAll();
+        $response = $this->createQueryBuilder('j')
+        ->leftJoin('j.compteDebit', 'c')
+        ->leftJoin('j.compteCredit', 'd')
+        ->select('j.id, j.date, c.labelCompte as compteDebit, d.labelCompte as compteCredit, j.montant, j.commentaire')
+        ->orderBy('j.date', 'DESC')
+
+        ->getQuery()
+        ->getResult()
+        ;
+        return $response;
     }
+
 
     /**
     * @return Journal[] Returns an array of Journal object
