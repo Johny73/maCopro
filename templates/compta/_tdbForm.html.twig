@@ -14,7 +14,7 @@
             </thead>
             <tbody>
             {% for compte in journal %}  
-                {% if compte[0] in [27, 40, 41, 42, 44] %}
+                {% if compte[0] in [27, 40, 41, 42] %}
                     <tr class="row">
                         <td class="col-4">{{compte[1]}}</th>
                         <td class="text-right col-3">{{compte[2]|format_currency('EUR', {fraction_digit: 2})}}</td>
