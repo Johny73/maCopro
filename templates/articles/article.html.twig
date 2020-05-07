@@ -6,7 +6,7 @@
 <div class="col-6 mx-auto">
     <h1 class="text-center">{{ article.titre }}</h1>
     <p>Publié le {{ article.createdAt|date('d/m/Y à h\\hi') }}</p>
-    <div>{{ article.image }}</div>
+    <img src="{{ vich_uploader_asset(article, 'imageFile') }}" alt="">
     <div>{{ article.contenu|raw }}</div>
 </div>
 <div class="col-6 mx-auto">
@@ -17,7 +17,7 @@
         <div>{{ commentaire.contenu }}</div>
     </div>
     {% else %}
-    <div class="mx-auto border border-dark rounded">
+    <div class="mx-auto">
         <p>Il n'y a pas de commentaires</p>
     </div>
     {% endfor %}
