@@ -1,0 +1,57 @@
+
+INSERT INTO `articles` (`id`, `users_id`, `titre`, `contenu`, `created_at`, `updated_at`, `image`, `slug`) VALUES
+(2, 1, 'Projet travaux', 'La copropriété envisage à installer un air de jeu dans l\'espace verte. Vos idées ?', '2020-05-07 09:43:39', '2020-05-07 09:43:39', NULL, 'projet-travaux'),
+(3, 1, 'Organisation AG', 'Le CS syndical propose de tenir notre AG 2020 le 14 juin prochain à 18h. Qui pourrait l\'accueillir chez soi ?', '2020-05-07 09:46:57', '2020-05-07 09:46:57', NULL, 'organisation-ag');
+
+
+INSERT INTO `commentaires` (`id`, `articles_id`, `contenu`, `actif`, `email`, `pseudo`, `rgpd`, `created_at`) VALUES
+(3, 3, 'Ca pourrait être chez moi.', 0, 'j_heijlen@hotmail.com', 'moi', 1, '2020-05-07 10:23:14');
+
+
+INSERT INTO `comptes` (`id`, `num_compte`, `label_compte`, `imput_locataire`, `type_compte`) VALUES
+(24, '601100', 'Eau', 1, 'D'),
+(25, '602000', 'Electricité', 1, 'D'),
+(26, '604000', 'Produits entret + petit équip.', 1, 'D'),
+(27, '604401', 'Fournisseurs', 0, 'D'),
+(28, '606000', 'Fournitures', 0, 'D'),
+(29, '611000', 'Nettoyage', 1, 'D'),
+(30, '613520', 'Location compteurs eau', 0, 'D'),
+(31, '615000', 'Entretien et petites réparations', 0, 'D'),
+(32, '616100', 'Assurance multirisques', 0, 'D'),
+(33, '621100', 'Rémunération syndic', 0, 'D'),
+(34, '621250', 'Frais Assemblée', 0, 'D'),
+(35, '621300', 'Frais postaux', 0, 'D'),
+(36, '671', 'Travaux décidés par l\'assemblée générale', 0, 'D'),
+(37, '6223', 'Autres honoraires', 0, 'D'),
+(38, '623800', 'Agios et frais bancaires', 0, 'D'),
+(39, '701000', 'Provisions sur opérations courantes', 0, 'D'),
+(40, '512', 'Banque', 0, 'C'),
+(41, '513', 'Banque Postale', 0, 'C'),
+(42, '53', 'Espèces', 0, 'C'),
+(43, '514', 'Chèques', 0, 'C'),
+(44, '701', 'Provisions sur opérations courantes', 0, 'D'),
+(45, '702', 'Provisions travaux', 0, 'D'),
+(46, '4910001', 'Lot 0001', 0, 'C'),
+(47, '4910002', 'Lot 0002', 0, 'C'),
+(48, '4910003', 'Lot 0003', 0, 'C'),
+(49, '4910004', 'Lot 0004', 0, 'C');
+
+
+INSERT INTO `journal` (`id`, `date`, `montant`, `commentaire`, `compte_debit_id`, `compte_credit_id`) VALUES
+(7, '2020-01-07', 1300, 'réception charges Lot 1', 40, 46),
+(8, '2020-01-08', 27.56, 'frais bancaire', 38, 40),
+(9, '2020-01-08', 643.17, 'paiement assurance', 32, 40);
+
+
+
+INSERT INTO `proprietaires` (`id`, `nom`, `prenom`, `numero`, `voie`, `code_postal`, `ville`, `tel_perso`, `tel_pro`, `bic`, `iban`, `mail`) VALUES
+(17, 'DUPONT', 'Jacques', '10', 'Avenue Six', '44000', 'NANTES', '0203040506', NULL, NULL, NULL, 'jacques.dupont@dawan.fr'),
+(18, 'LECLERQ', 'Louis', '11', 'Avenue Sept', '44000', 'NANTES', '0202020204', NULL, NULL, NULL, 'louis.leclerq@dawan.fr'),
+(19, 'DELCROIX', 'Marie', '11', 'Avenue Huit', '44000', 'NANTES', '0605040312', NULL, NULL, NULL, 'marie.delcroix@dawan.fr');
+
+
+INSERT INTO `users` (`id`, `email`, `roles`, `password`) VALUES
+(1, 'j_heijlen@hotmail.com', '[\"ROLE_ADMIN\"]', '$argon2id$v=19$m=65536,t=4,p=1$VHZCbmlaa1ZUNUdOTFRtRw$kNQ5CxU/0Ij8nJoy+aEf9AEgIbkTxSZOozdAqsY7Dt4'),
+(2, 'adminTest', '[\"ROLE_ADMIN\"]', '$argon2id$v=19$m=65536,t=4,p=1$RUtWdW0zM0IvaGEvOXlkOA$9Mf6rcYy89yU9U1ZuGNWIpMXc0ixETdmFfND2cDDhAo');
+
+
