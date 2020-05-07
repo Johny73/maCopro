@@ -1,13 +1,14 @@
 easy_admin:
-    site_name: 'Gestion de ma coPro'
+    site_name: 'Gestion de ma coPro' 
     user:
         display_name: true
-        display_avatar: false
+        display_avatar: true
     design:
         form_theme:
             - "@EasyAdmin/form/bootstrap_4.html.twig"
             - "@FOSCKEditor/Form/ckeditor_widget.html.twig"
         menu:
+            - { label: 'Accueil du site', route: 'infos_articles', icon: 'home' }
             - { label: 'Articles' }
             - { entity: 'Articles', label: 'Articles', icon: 'book' }
             - { label: 'Utilisateurs' }
@@ -24,6 +25,9 @@ easy_admin:
                     - { property: 'image', label: 'Image', type: 'image', base_path: '%app.path.featured_images%' }
                     - { property: 'created_at', label: 'Créé' }
                 sort: ['created_at', 'desc']
+            show:
+                fields:
+                    - { property: 'image', type: 'image', base_path: '%app.path.featured_images%' }
             form:
                 fields:
                     - titre
