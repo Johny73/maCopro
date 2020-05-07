@@ -62,35 +62,16 @@ class ProprioController extends AbstractController
 
         if ($form->isSubmitted()) {
             if (isset($_POST['edit'])) {
-                return $this->redirectToRoute('app_proprio_edit', array('id' => $proprio->getId()));
-            }
-        }
+                    $manager->flush();
+    
+                    $this->addFlash('success', 'Modification enrégistrée');
+                    return $this->redirectToRoute('app_proprio_show', array('id' => $proprio->getId()));
+                    }
+                }
 
         return $this->render('proprio/show.html.twig', [
             'show_form' => $form->createview(),
             'proprio' => $proprio,]);
     }
 
-    /**
-     * @Route("/edit/{id}", requirements={"id": "\d+"})
-     */
-    public function edit(Proprietaires $proprio, Request $request, EntityManagerInterface $manager)
-    {
-        $form = $this->createForm(ProprioType::class, $proprio, ['method' => 'POST']);
-        $form->HandleRequest($request);
-
-        if ($form->isSubmitted()) {
-            if (isset($_POST['valid'])) {
-                $manager->flush();
-
-                $this->addFlash('succes', 'Modification apportée');
-
-                return $this->redirectToRoute('app_proprio_show', array('id' => $proprio->getId()));
-            }
-        }
-
-        return $this->render('proprio/edit.html.twig', [
-            'edit_form' => $form->createview(),
-            'proprio' => $proprio,]);
-    }
 }
