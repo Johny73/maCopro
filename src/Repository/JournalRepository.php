@@ -63,12 +63,14 @@ class JournalRepository extends ServiceEntityRepository
         
         $response = Array();
         $varId = 0;
+        $varLabel ='';
         $varMontantDebit = 0;
         $varMontantCredit = 0;
         foreach ($listeComptes as $compte){
             $varMontantDebit = 0;
             $varMontantCredit = 0;
             $varId = $compte->getId();
+            $varLabel = $compte->getLabelCompte();
             foreach ($journalAggregate as $detailAggregate) {
                 if ($detailAggregate['idCompteDebit'] === $varId){
                     $varMontantDebit +=  $detailAggregate['debit'];
@@ -78,7 +80,7 @@ class JournalRepository extends ServiceEntityRepository
                 }
 
             }
-            Array_push($response, [$varId, $varMontantDebit, $varMontantCredit]);
+            Array_push($response, [$varId, $varLabel, $varMontantDebit, $varMontantCredit]);
             
         }
         return $response;

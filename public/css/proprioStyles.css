@@ -1,3 +1,15 @@
 form {
     background-color: white;
 }
+
+
+#tableTdb {
+    width: 75%;
+    align-self: center;
+    
+}
+
+#tabledTdb tr {
+    height: 18px;
+}
+

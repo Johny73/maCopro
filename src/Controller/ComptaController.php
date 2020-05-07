@@ -7,6 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Journal;
 use App\Form\HistoComptaType;
+use App\Form\JournalTdbType;
 use App\Form\JournalType;
 use App\Repository\JournalRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -28,11 +29,14 @@ class ComptaController extends AbstractController
         $tdb = $repository->createJournalTdb($comptesRepository, $year);
         $journal = new Journal();
         $form = $this->createForm(HistoComptaType::class, $journal);
+        $form2 = $this->createForm(JournalTdbType::class);
+
 
         return $this->render('compta/index.html.twig', [
             'histo_form' => $form->createView(),
             'ecritures' => $ecritures,
             'journal' => $tdb,
+            'tdb_form' => $form2->createview(),
         ]);
     }
 
