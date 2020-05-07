@@ -1,0 +1,26 @@
+{% use "form_div_layout.html.twig" %}
+
+{{ form_start(form)}}
+    <small>
+        <div class="container mx-1">
+            <table class="table-sm" id="tableTdb">
+            <thead>
+                <tr class="row text-right">
+                    <th scope="col" class="col-4 text-left">Compte</th>
+                    <th scope="col" class="col-3">Débit</th>
+                    <th scope="col" class="col-3">Crédit</th>
+                    <th scope="col" class="col-2">Solde</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for compte in journal %}  
+                {% if compte[0] in [27, 40, 41, 42] %}
+                    <tr class="row">
+                        <td class="col-4">{{compte[1]}}</th>
+                        <td class="text-right col-3">{{compte[2]|format_currency('EUR', {fraction_digit: 2})}}</td>
+                        <td class="text-right col-3">{{compte[3]|format_currency('EUR', {fraction_digit: 2})}}</td>
+                        <td class="text-right col-2">{{(compte[2] - compte[3])|format_currency('EUR', {fraction_digit: 2}) }}</td>
+                    </tr>
+                {% endif %}
+            {% endfor %}
+{{ form_end(form,  {'render_rest': false}) }}

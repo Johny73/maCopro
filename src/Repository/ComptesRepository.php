@@ -5,6 +5,7 @@ namespace App\Repository;
 use App\Entity\Comptes;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
+use App\Repository\JournalRepository;
 
 /**
  * @method Comptes|null find($id, $lockMode = null, $lockVersion = null)
@@ -26,5 +27,13 @@ class ComptesRepository extends ServiceEntityRepository
             ->getResult()
             ;
     }
+
+
+    public function getTdb(){
+        $journalAggregated = findJournalTdb(2020);
+
+        return;
+    }
+
 
 }
