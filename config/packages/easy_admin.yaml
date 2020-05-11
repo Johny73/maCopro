@@ -10,9 +10,12 @@ easy_admin:
         menu:
             - { label: 'Accueil du site', route: 'infos_articles', icon: 'home' }
             - { label: 'Articles' }
-            - { entity: 'Articles', label: 'Articles', icon: 'book' }
+            - { entity: 'Articles', label: 'Articles', icon: 'file' }
+            - { entity: 'Commentaires', label: 'Commentaires', icon: 'comment' }
+            - { label: 'Proprietaires' }
+            - { entity: 'Proprietaires', label: 'Propriétaires', icon: 'users' }
             - { label: 'Utilisateurs' }
-            - { entity: 'Users', label: 'Utilisateurs', icon: 'user' }
+            - { entity: 'Users', label: 'Utilisateurs', icon: 'user' }           
     formats:
         datetime: 'd/m/Y à H:i'
     entities:
@@ -34,6 +37,52 @@ easy_admin:
                     - { property: 'contenu', type: 'fos_ckeditor', type_options: { config_name: 'main_config' }}
                     - { property: 'imageFile', type: 'vich_image', label: 'Image' }
                     - users
+        Commentaires:
+            class: App\Entity\Commentaires
+            list:
+                fields:
+                    - actif
+                    - pseudo
+                    - email
+                    - contenu
+                    - { property: 'created_at', label: 'Créé' }
+                sort: ['created_at', 'desc']
+            form:
+                fields:
+                    - pseudo
+                    - email
+                    - { property: 'contenu', type: 'fos_ckeditor', type_options: { config_name: 'main_config' }}
+                    - { property: 'created_at', label: 'Créé' }
+                sort: ['created_at', 'desc']
+        Proprietaires:
+            class: App\Entity\Proprietaires
+            list:
+                fields:
+                    - nom
+                    - prenom
+                    - numero
+                    - voie
+                    - codePostal
+                    - ville
+                    - telperso
+                    - telPro
+                    - mail
+                    - bic
+                    - iban
+                sort: ['id', 'desc']
+            form:
+                fields:
+                    - nom
+                    - prenom
+                    - numero
+                    - voie
+                    - codePostal
+                    - ville
+                    - telPerso
+                    - telPro
+                    - mail
+                    - bic
+                    - iban
         Users:
             class: App\Entity\Users
             label: 'Utilisateurs'
