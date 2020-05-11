@@ -61,16 +61,19 @@ class Proprietaires
     private $telPro;
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\Email
      */
     private $mail;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\Bic(message="Ce code BIC n'est pas valide")
      */
     private $bic;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\Iban(message="Ce code IBAN n'est pas valide")
      */
     private $iban;
 
@@ -105,7 +108,7 @@ class Proprietaires
 
     public function setPrenom(string $prenom): self
     {
-        $this->prenom = ucwords(strtolower($prenom));
+        $this->prenom = $prenom;
 
         return $this;
     }
@@ -202,7 +205,7 @@ class Proprietaires
 
     public function setBic(?string $bic): self
     {
-        $this->bic = $bic;
+        $this->bic = MB_strtoupper($bic);
 
         return $this;
     }
@@ -214,7 +217,7 @@ class Proprietaires
 
     public function setIban(?string $iban): self
     {
-        $this->iban = $iban;
+        $this->iban = MB_strtoupper($iban); 
 
         return $this;
     }
