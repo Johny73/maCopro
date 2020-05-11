@@ -29,11 +29,4 @@ class ComptesRepository extends ServiceEntityRepository
     }
 
 
-    public function getTdb(){
-        $journalAggregated = findJournalTdb(2020);
-
-        return;
-    }
-
-
 }
