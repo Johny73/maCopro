@@ -2,6 +2,9 @@ form {
     background-color: white;
 }
 
+body {
+    height: auto;
+}
 
 #tableTdb {
     width: 75%;
