@@ -1,25 +1,30 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}
-
-
-{% endblock %}
+{% block title %}MaCopro : Comptabilité{% endblock %}
 
 
 {% block bodytitle %}
-    <h1>Journal</h1>
-    <div id="journalTdb"></div>
-    
-<nav class="my-3 navbar navbar-expand-lg navbar-light bg-light">
-        <ul class="nav">
-            <li class="nav-item">
-                <a class="btn btn-primary m-2" href="{{ path('app_compta_index') }} ">Historique</a>
-            </li>
-            <li class="nav-item">
-                <a class="btn btn-primary m-2" href="{{ path('app_compta_new') }} ">Nouvellle entrée</a>
-            </li>
-        </ul>
-</nav>
+ 
+  
+<div id="tdbDiv" class="container">
+        {% if journal is defined %} 
+            {{ include('compta/_tdbForm.html.twig', {form: tdb_form} ) }}
+        {% endif %}
+    </div>
+{% endblock %}
+
+{% block navigationCompta %}
+  <h2>Journal</h2>
+        <div role="navigation" class="my-3 navbar navbar-expand-lg navbar-light bg-light">
+                <ul class="nav">
+                    <li class="nav-item">
+                        <a class="btn btn-primary m-2" href="{{ path('app_compta_index') }} ">Historique</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="btn btn-primary m-2" href="{{ path('app_compta_new') }} ">Nouvelle entrée</a>
+                    </li>
+                </ul>
+        </div>
 
 {% endblock %}
 
@@ -28,7 +33,3 @@
         {{ include('compta/_histoForm.html.twig', {form:histo_form}) }}
 {% endblock %}
 
-{% block javascripts %}
-    <script src="{{ asset('js/journalTdb.js') }}"/>
-
-{% endblock %}

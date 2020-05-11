@@ -5,6 +5,7 @@ namespace App\Repository;
 use App\Entity\Journal;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
+use Doctrine\ORM\EntityManagerInterface;
 
 /**
  * @method Journal|null find($id, $lockMode = null, $lockVersion = null)
@@ -19,27 +20,69 @@ class JournalRepository extends ServiceEntityRepository
         parent::__construct($registry, Journal::class);
     }
 
-    // /**
-    //  * @return Journal[]
-    //  */
+    /**
+     * @return Journal[]
+     */
     public function findWithLabels()
     {
-        $conn = $this->getEntityManager()
-        ->getConnection();
-    $sql = '
-        SELECT a.id, a.date, b.label_compte AS compteDebit, c.label_compte AS compteCredit, a.montant, a.commentaire
-        FROM Journal a
-        JOIN comptes b 
-            ON a.compte_debit_id = b.id
-        JOIN comptes c
-            ON a.compte_credit_id = c.id
-        ORDER BY a.date DESC
-        ';
-    $stmt = $conn->prepare($sql);
-    $stmt->execute();
-    return $stmt->fetchAll();
+        $response = $this->createQueryBuilder('j')
+        ->leftJoin('j.compteDebit', 'c')
+        ->leftJoin('j.compteCredit', 'd')
+        ->select('j.id, j.date, c.labelCompte as compteDebit, d.labelCompte as compteCredit, j.montant, j.commentaire')
+        ->orderBy('j.date', 'DESC')
+
+        ->getQuery()
+        ->getResult()
+        ;
+        return $response;
     }
 
 
+    /**
+    * @return Journal[] Returns an array of Journal object
+    */
+    public function findJournalTdb($yearJournal)
+    {
+        $response = $this->createQueryBuilder('j')
+        ->leftJoin('j.compteDebit', 'c')
+        ->leftJoin('j.compteCredit', 'd')
+        ->select('c.id as idCompteDebit, d.id as idCompteCredit, sum(j.montant) as debit, sum(j.montant) as credit')
+        ->andWhere('YEAR(j.date) LIKE :searchTerm')
+        ->setParameter('searchTerm', '%'.$yearJournal.'%')
+        ->groupby('c.labelCompte, d.labelCompte')
+        ->getQuery()
+        ->getResult()
+        ;
+        return $response;
+    }
 
+
+    public function createJournalTdb(ComptesRepository $comptes, $yearJournal){
+        $journalAggregate = $this->findJournalTdb($yearJournal);
+        $listeComptes = $comptes->findAll();
+        
+        $response = Array();
+        $varId = 0;
+        $varLabel ='';
+        $varMontantDebit = 0;
+        $varMontantCredit = 0;
+        foreach ($listeComptes as $compte){
+            $varMontantDebit = 0;
+            $varMontantCredit = 0;
+            $varId = $compte->getId();
+            $varLabel = $compte->getLabelCompte();
+            foreach ($journalAggregate as $detailAggregate) {
+                if ($detailAggregate['idCompteDebit'] === $varId){
+                    $varMontantDebit +=  $detailAggregate['debit'];
+                }
+                if ($detailAggregate['idCompteCredit'] === $varId){
+                    $varMontantCredit +=  $detailAggregate['credit'];
+                }
+
+            }
+            Array_push($response, [$varId, $varLabel, $varMontantDebit, $varMontantCredit]);
+            
+        }
+        return $response;
+    }
 }

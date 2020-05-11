@@ -12,7 +12,7 @@ proprio:
   ville:
     label: 'Ville'
   telPerso:
-    label: 'Téléphone domicile'
+    label: 'Téléphone dom.'
   telPro:
     label: 'Téléphone travail'
   mail:
