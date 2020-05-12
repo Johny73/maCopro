@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}MaCopro : Lots{% endblock %}
+
+
+{% block body %}
+
+    <h3>Fiche Lot  : {{lot.numLot}}  </h3>
+         {% for message in app.flashes('success') %}
+            <div class="alert alert-success">
+                {{ message }}
+            </div>
+        {% endfor %}
+
+    {{ include('lots/_form.html.twig', {form: show_form, action:'lots.action.retour'|trans,
+        actionValue: 'return', action2:'lots.action.modifier'|trans, action2Value: 'edit'}) }}
+
+
+{% endblock %}

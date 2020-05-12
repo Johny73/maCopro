@@ -12,13 +12,18 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\DateTime;
 
 class JournalType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+
+        
+            
         $builder
-            ->add('date', DateType::class, ['widget' => 'single_text',] )
+            ->add('date', DateType::class, ['widget' => 'single_text', 
+                'data' => new \DateTime(), ] )
             ->add('montant', NumberType::class)
             ->add('compteDebit', EntityType::class, [
                 'class' => Comptes::class,

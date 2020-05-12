@@ -10,7 +10,6 @@ use Symfony\Component\Routing\Annotation\Route;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 
-
 /**
  * @Route("/proprio")
  */
@@ -73,5 +72,7 @@ class ProprioController extends AbstractController
             'show_form' => $form->createview(),
             'proprio' => $proprio,]);
     }
+
+
 
 }

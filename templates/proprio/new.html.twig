@@ -1,10 +1,13 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}MaCopro : Propriétaires{% endblock %}
+
 {% block body %}
     <h2>{{ 'proprio.new_page.title'|trans }}</h2>
+    <br/>
 
 
-    {{ include('proprio/_form.html.twig', {form: new_proprio_form, action2:'proprio.action.ajouter'|trans,
+    {{ include('proprio/_form.html.twig', {form: new_proprio_form, action2:'proprio.action.valider'|trans,
         action2Value: 'new', action:'proprio.action.retour'|trans, actionValue: 'return'}) }}
 {% endblock %}
 
