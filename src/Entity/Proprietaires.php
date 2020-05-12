@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -77,10 +78,16 @@ class Proprietaires
      */
     private $iban;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Lots", mappedBy="proprietaire")
+     */
+    private $lots;
+
 
     public function __construct()
     {
         $this->coproprietaires = new ArrayCollection();
+        $this->lots = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -218,6 +225,37 @@ class Proprietaires
     public function setIban(?string $iban): self
     {
         $this->iban = MB_strtoupper($iban); 
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Lots[]
+     */
+    public function getLots(): Collection
+    {
+        return $this->lots;
+    }
+
+    public function addLot(Lots $lot): self
+    {
+        if (!$this->lots->contains($lot)) {
+            $this->lots[] = $lot;
+            $lot->setProprietaire($this);
+        }
+
+        return $this;
+    }
+
+    public function removeLot(Lots $lot): self
+    {
+        if ($this->lots->contains($lot)) {
+            $this->lots->removeElement($lot);
+            // set the owning side to null (unless already changed)
+            if ($lot->getProprietaire() === $this) {
+                $lot->setProprietaire(null);
+            }
+        }
 
         return $this;
     }
