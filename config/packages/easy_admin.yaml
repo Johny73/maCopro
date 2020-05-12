@@ -14,6 +14,8 @@ easy_admin:
             - { entity: 'Commentaires', label: 'Commentaires', icon: 'comment' }
             - { label: 'Proprietaires' }
             - { entity: 'Proprietaires', label: 'Propriétaires', icon: 'users' }
+            - { label: 'Lots' }
+            - { entity: 'Lots', label: 'Lots', icon: 'building' }
             - { label: 'Utilisateurs' }
             - { entity: 'Users', label: 'Utilisateurs', icon: 'user' }           
     formats:
@@ -83,6 +85,27 @@ easy_admin:
                     - mail
                     - bic
                     - iban
+        Lots:
+            class: App\Entity\Lots
+            list:
+                fields:
+                    - numero
+                    - numLot
+                    - voie
+                    - codePostal
+                    - ville
+                    - quotePart
+                    - proprietaire
+                sort: ['id', 'desc']
+            form:
+                fields:
+                    - numero
+                    - numLot
+                    - voie
+                    - codePostal
+                    - ville
+                    - quotePart
+                    - proprietaire         
         Users:
             class: App\Entity\Users
             label: 'Utilisateurs'
