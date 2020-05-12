@@ -37,3 +37,25 @@ proprio:
   show_page:
     title: 'Détail du '
 
+lots:
+  action:
+    ajouter: 'Ajouter nouveau'
+    voir: 'Consulter'
+    modifier: 'Modifier'
+    retour: 'Retour liste Lots'
+    valider: 'Valider'
+  numLot:
+    label: 'Numéro Lot'
+  numero:
+    label: 'Numéro'
+  voie:
+    label: 'Voie'
+  codePostal:
+    label: 'Code postal'
+  ville:
+    label: 'Ville'
+  quotePart:
+    label: 'Tantièmes'
+  proprietaire:
+    label: 'Propriétaire'
+

@@ -1,0 +1,77 @@
+{% use "form_div_layout.html.twig" %}
+
+{{ form_start(form) }}
+<div class='container border border-dark p-1'>
+    <div class='bloc_identite border border-dark p-2'>
+        <div class='row'>
+            <div class='col-sm-2 py-0 my-1'>
+                {{ 'lots.numLot.label'|trans }}:
+            </div> 
+            <div  class='col-sm-4 py-0 my-1'>
+                {{ form_widget(form.numLot ) }}
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="bloc_adresse  border border-dark p-2"> 
+    <p><u>Adresse:</u></p>  
+        <div class='row'>
+           <div class='col-md-2 py-0 my-1'> 
+                {{'lots.numero.label'|trans }}:
+            </div> 
+            <div class='col-md-1 py-0 my-1'>
+                {{ form_widget(form.numero ) }}
+            </div>
+            <div class='col-md-1 py-0 my-1'>
+                {{'lots.voie.label'|trans }}:
+            </div>
+            <div class='col-md-5 py-0 my-1'>
+                {{ form_widget(form.voie )}}
+            </div>
+        </div>
+        <div>
+            <div class='col-lg-2 py-0 my-1'>
+                {{'lots.codePostal.label'|trans }}:
+            </div>
+            <div  class='col-lg-2 py-0 my-0'>
+                {{ form_widget(form.codePostal )}}
+            </div>
+            <div class='col-lg-1 py-0 my-1'>
+                {{'lots.ville.label'|trans }}:
+            </div>
+            <div class='col-lg-5 py-0 my-1'>
+                {{ form_widget(form.ville )}}
+            </div>
+        </div>
+    </div>
+    <br/>
+        <div class='border border-dark p-2'>
+        <div class='row'>
+            <div class='col-2 py-0 my-1'>
+                {{'lots.quotePart.label'|trans }}:
+            </div>
+            <div  class='col-4 py-0 my-1'>
+                {{ form_widget(form.quotePart ) }}
+            </div>
+        </div>
+        <div class='row'>
+            <div class='col-2 py-0 my-1'>
+                {{'lots.proprietaire.label'|trans }}:
+            </div>
+            <div class='col-4 py-0 my-1'>
+                {{ form_widget(form.proprietaire ) }}
+            </div>
+        </div>
+    </div>
+</div>
+    <br />
+
+
+
+    <div class='row'>
+        <a class='col-sm-1'></a>
+        <a class="btn btn-primary offset-1" href="{{ path('app_lots_index') }}"> {{ 'lots.action.retour'|trans }} </a>
+        <input class='btn btn-primary col-sm-3 offset-1' type='submit' id='{{ action2Value }}' name='{{ action2Value }}' value='{{ action2 }}' />
+    </div>
+{{ form_end(form) }}
+

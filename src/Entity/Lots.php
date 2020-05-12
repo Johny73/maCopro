@@ -47,7 +47,7 @@ class Lots
     private $quotePart;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\proprietaires", inversedBy="lots")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Proprietaires", inversedBy="lots")
      */
     private $proprietaire;
 

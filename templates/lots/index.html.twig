@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}MaCopro : Lots{% endblock %}
+
+{% block bodytitle %}
+   {% for message in app.flashes('success') %}
+            <div class="alert alert-success">
+                {{ message }}
+            </div>
+        {% endfor %}
+
+    <h2> Gestion des lots </h2>
+{% endblock %}
+
+ {% block body %}
+    <div class="container">
+        <div class="row">
+            <ul class="col-6">
+                {%  for lot in lots %}
+                    <li class="row">
+                        <span class="col"> {{ lot.numLot }} </span> <a class="col" href="{{ path('app_lots_show', { id: lot.id }) }} ">  {{'lots.action.voir'|trans  }}  </a></li>
+                {% endfor %}
+            </ul>
+        </div>
+        <br />
+        <a class="btn btn-primary" href="{{ path('app_lots_new') }}">  {{'lots.action.ajouter'|trans  }}  </a>
+
+    </div>
+
+{% endblock %}
