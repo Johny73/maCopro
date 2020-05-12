@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}MaCopro : Lots{% endblock %}
+
+{% block body %}
+    <h2> Ajout nouveau lot </h2>
+    <br/>
+
+
+    {{ include('lots/_form.html.twig', {form: new_lots_form, action2:'lots.action.valider'|trans,
+        action2Value: 'new', action:'lots.action.retour'|trans, actionValue: 'return'}) }}
+{% endblock %}
+
+ {% block javascripts %}
+
+ {% endblock %}

@@ -1,16 +1,18 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}MaCopro : PRopriétaires{% endblock %}
+{% block title %}MaCopro : Propriétaires{% endblock %}
 
-{% block body %}
-
-     {% for message in app.flashes('success') %}
+{% block bodytitle %}
+   {% for message in app.flashes('success') %}
             <div class="alert alert-success">
                 {{ message }}
             </div>
         {% endfor %}
 
     <h1>{{ 'proprio.index_page.title'|trans }}</h1>
+{% endblock %}
+
+ {% block body %}
     <div class="container">
         <div class="row">
             <ul class="col-6">

@@ -18,9 +18,10 @@ class ProprioType extends AbstractType
             ->add('voie')
             ->add('codePostal')
             ->add('ville')
-            ->add('telPerso')
-            ->add('telPro')
-            ->add('mail')
+            /*les placeholder ont été enlevé car affichage trop similair aux vraies données*/
+            ->add('telPerso' /*, null, ['attr' => ['placeholder' => '012345678']]*/)
+            ->add('telPro'/*, null, ['attr' => ['placeholder' => '012345678']]*/)
+            ->add('mail'/*, null, ['attr' => ['placeholder' => 'monMail@gmail.fr']]*/)
             ->add('bic')
             ->add('iban')
 

@@ -1,4 +1,4 @@
-{% form_theme form 'proprio/formThemes/themeProprio.html.twig' %}
+ {% form_theme form 'proprio/formThemes/themeProprio.html.twig' %} 
 
 {{ form_start(form) }}
 <div class='container border border-dark p-1'>
@@ -37,17 +37,17 @@
                 {{ form_widget(form.voie )}}
             </div>
         </div>
-        <div class='row'>
-            <div class='col-md-2 py-0 my-1'>
+        <div class='row row-no-gutters'>
+            <div class='col-lg-2 py-0 my-1'>
                 {{'proprio.codePostal.label'|trans }}:
             </div>
-            <div  class='col-md-2 py-0 my-1'>
+            <div  class='col-lg-2 py-0 my-0'>
                 {{ form_widget(form.codePostal )}}
             </div>
-            <div class='col-md-1 py-0 my-1'>
+            <div class='col-lg-1 py-0 my-1'>
                 {{'proprio.ville.label'|trans }}:
             </div>
-            <div class='col-md-4 py-0 my-1'>
+            <div class='col-lg-5 py-0 my-1'>
                 {{ form_widget(form.ville )}}
             </div>
         </div>
@@ -87,7 +87,7 @@
             <div class='col-2 py-0 my-1'>
                 {{'proprio.bic.label'|trans }}:
             </div>
-            <div  class='col-3 py-0 my-1'>
+            <div  class='col-4 py-0 my-1'>
                 {{ form_widget(form.bic ) }}
             </div>
         </div>
@@ -95,7 +95,7 @@
             <div class='col-2 py-0 my-1'>
                 {{'proprio.iban.label'|trans }}:
             </div>
-            <div class='col-3 py-0 my-1'>
+            <div class='col-4 py-0 my-1'>
                 {{ form_widget(form.iban ) }}
             </div>
         </div>
@@ -110,4 +110,5 @@
     </div>
 
 </div>
+{{ form_errors(form) }}
 {{ form_end(form) }}

@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\JournalRepository")
@@ -17,7 +18,9 @@ class Journal
     private $id;
 
     /**
-     * @ORM\Column(type="date", nullable=true)
+     * @ORM\Column(type="date", nullable=false)
+     * @Assert\LessThanOrEqual("today", message="La date ne peut pas être supérieur à aujourd'hui")
+
      */
     private $date;
 
@@ -32,12 +35,13 @@ class Journal
     private $compteCredit;
 
     /**
-     * @ORM\Column(type="float", nullable=true)
+     * @ORM\Column(type="float", nullable=false)
+     * @Assert\Regex(pattern="/^[0-9]+$/", message="Merci de ne que saisir des nombres")
      */
     private $montant;
 
     /**
-     * @ORM\Column(type="text", nullable=true)
+     * @ORM\Column(type="text", nullable=false)
      */
     private $commentaire;
 
